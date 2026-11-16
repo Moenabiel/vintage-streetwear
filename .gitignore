@@ -1,0 +1,17 @@
+node_modules/
+dist/
+build/
+out/
+.astro/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/email/
+documents/
