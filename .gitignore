@@ -13,5 +13,11 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
-.pytest_cache/email/
+.pytest_cache/
+
+# Business material — local only, never published.
+# Company profile, analytics dashboard, pitch deck, email templates, launch plan.
 documents/
+email/
+plan/
+templates/
