@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VNTGE CULTURE — Vintage Streetwear Worldwide</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>VNTGE CULTURE — Vintage Streetwear</title>
+  <meta name="description" content="VNTGE CULTURE — a vintage streetwear brand and website concept: seven-token design system, two typefaces, CSS-drawn product art. Pre-launch.">
+  <link rel="preload" href="fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/space-grotesk-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts/fonts.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -15,7 +18,7 @@
       --gold-light: #E8D5B7;
       --cream: #F5F0E8;
       --white: #FFFFFF;
-      --gray: #6B6B6B;
+      --gray: #8E8A84;
     }
 
     body {
@@ -78,6 +81,26 @@
       font-weight: 700 !important;
     }
 
+    .nav-toggle {
+      display: none;
+      width: 42px;
+      height: 38px;
+      padding: 11px 10px;
+      background: none;
+      border: 1px solid rgba(200,169,126,0.35);
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .nav-toggle span {
+      display: block;
+      height: 1px;
+      width: 100%;
+      background: var(--gold);
+      transition: transform 0.25s, opacity 0.25s;
+    }
+
     /* HERO */
     .hero {
       margin-top: 70px;
@@ -105,6 +128,7 @@
 
     .hero-badge {
       display: inline-block;
+      max-width: 100%;
       border: 1px solid var(--gold);
       padding: 6px 18px;
       font-size: 11px;
@@ -141,7 +165,7 @@
       max-width: 480px;
     }
 
-    .hero-buttons { display: flex; gap: 16px; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
 
     .btn-gold {
       background: var(--gold);
@@ -180,7 +204,7 @@
     }
 
     .hero-stat h3 { font-size: 28px; font-weight: 800; color: var(--gold); }
-    .hero-stat p { font-size: 12px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; }
+    .hero-stat p { font-size: 12px; color: var(--gold-light); opacity: 0.75; letter-spacing: 1px; text-transform: uppercase; }
 
     /* COLLECTIONS */
     .collections {
@@ -191,7 +215,7 @@
     .section-header { text-align: center; margin-bottom: 60px; }
     .section-header h2 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 36px;
+      font-size: clamp(24px, 7vw, 36px);
       font-weight: 800;
       color: var(--white);
       margin-bottom: 10px;
@@ -229,9 +253,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 64px;
       background: linear-gradient(135deg, #2D2D2D, #1A1A1A);
       transition: transform 0.5s;
+    }
+
+    .card-image svg {
+      width: 104px;
+      height: 104px;
+      color: var(--gold);
+      opacity: 0.9;
     }
 
     .collection-card:hover .card-image { transform: scale(1.05); }
@@ -263,7 +293,8 @@
 
     .card-info p {
       font-size: 13px;
-      color: var(--gray);
+      color: var(--cream);
+      opacity: 0.72;
       margin-top: 4px;
     }
 
@@ -281,24 +312,57 @@
     }
 
     .about-image {
+      position: relative;
       background: linear-gradient(135deg, #1A1A1A, #0D0D0D);
       border: 1px solid rgba(200,169,126,0.2);
       height: 450px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 100px;
-      position: relative;
     }
 
-    .about-image::after {
-      content: 'VNTGE';
-      position: absolute;
+    /* Archive specimen card — typographic, no imagery: the build ships zero rasters. */
+    .spec-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      padding: 40px 44px;
+      border: 1px solid rgba(200,169,126,0.22);
+      background: rgba(26,26,26,0.6);
+      text-align: center;
+    }
+
+    .spec-kicker {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .spec-word {
       font-family: 'Montserrat', sans-serif;
-      font-size: 80px;
+      font-size: 40px;
       font-weight: 900;
-      color: rgba(200,169,126,0.06);
-      letter-spacing: 20px;
+      line-height: 1.06;
+      letter-spacing: 8px;
+      color: var(--cream);
+    }
+
+    .spec-rule {
+      width: 64px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.7;
+    }
+
+    .spec-meta {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      opacity: 0.8;
     }
 
     .about-content h2 {
@@ -314,7 +378,8 @@
 
     .about-content p {
       font-size: 15px;
-      color: var(--gray);
+      color: var(--cream);
+      opacity: 0.78;
       line-height: 1.8;
       margin-bottom: 16px;
     }
@@ -384,9 +449,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
       transition: opacity 0.3s;
       cursor: pointer;
+    }
+
+    .insta-item svg {
+      width: 58px;
+      height: 58px;
+      color: var(--gold-light);
+      opacity: 0.82;
     }
 
     .insta-item:hover { opacity: 0.7; }
@@ -418,14 +489,23 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 18px;
       font-weight: 700;
-      color: var(--gray);
+      color: var(--cream);
       letter-spacing: 3px;
       text-transform: uppercase;
-      opacity: 0.5;
-      transition: opacity 0.3s;
+      opacity: 0.62;
+      transition: opacity 0.3s, color 0.3s;
     }
 
     .stockist:hover { opacity: 1; color: var(--gold); }
+
+    .stockist-note {
+      margin-top: 26px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: 0.6;
+    }
 
     /* NEWSLETTER */
     .newsletter {
@@ -452,6 +532,7 @@
 
     .newsletter-form input {
       flex: 1;
+      min-width: 0;
       padding: 14px 20px;
       border: 1px solid rgba(200,169,126,0.3);
       background: var(--dark);
@@ -530,11 +611,47 @@
     @media (max-width: 768px) {
       .hero h1 { font-size: 36px; }
       .hero h1 em { font-size: 24px; }
+      .hero-badge { letter-spacing: 2px; font-size: 10px; }
+      .hero-stat p { font-size: 10px; letter-spacing: 0.5px; }
+      .hero-buttons { flex-direction: column; align-items: stretch; }
+      .hero-buttons a { text-align: center; }
       .collection-grid { grid-template-columns: 1fr 1fr; }
       .about-grid { grid-template-columns: 1fr; }
       .insta-grid { grid-template-columns: repeat(3, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
-      .nav-links { display: none; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form button { padding: 15px 20px; }
+
+      .nav-toggle { display: flex; }
+      .nav-toggle[aria-expanded='true'] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .nav-toggle[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
+      .nav-toggle[aria-expanded='true'] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      .nav-links {
+        position: fixed;
+        inset: 70px 0 auto 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        background: var(--black);
+        border-bottom: 1px solid rgba(200,169,126,0.25);
+        padding: 4px 8% 16px;
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition: opacity 0.2s, transform 0.2s;
+      }
+
+      .nav-links[data-open='true'] {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+
+      .nav-links li { width: 100%; border-bottom: 1px solid rgba(200,169,126,0.12); }
+      .nav-links li:last-child { border-bottom: 0; }
+      .nav-links a { display: block; padding: 15px 0; font-size: 12px; letter-spacing: 2px; }
+      .nav-cta { background: none !important; color: var(--gold) !important; padding: 15px 0 !important; }
     }
   </style>
 </head>
@@ -542,17 +659,20 @@
 
   <nav>
     <a href="#" class="nav-logo">VNTGE <span>CULTURE</span></a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
       <li><a href="#collections">Collections</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#stockists">Stockists</a></li>
       <li><a href="#contact" class="nav-cta">Wholesale</a></li>
     </ul>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <section class="hero">
     <div class="hero-content">
-      <div class="hero-badge">Vintage Streetwear — Since 2019</div>
+      <div class="hero-badge">Vintage Streetwear — SS26 Concept</div>
       <h1>WEAR THE<br><em>LEGACY</em></h1>
       <p>Curated vintage streetwear from the golden era. Every piece tells a story. Authentic. Rare. Worldwide.</p>
       <div class="hero-buttons">
@@ -561,16 +681,16 @@
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <h3>50K+</h3>
-          <p>Pieces Sold</p>
+          <h3>07</h3>
+          <p>Design Tokens</p>
         </div>
         <div class="hero-stat">
-          <h3>35</h3>
-          <p>Countries</p>
+          <h3>02</h3>
+          <p>Typefaces</p>
         </div>
         <div class="hero-stat">
-          <h3>200+</h3>
-          <p>Retail Partners</p>
+          <h3>00</h3>
+          <p>Raster Images</p>
         </div>
       </div>
     </div>
@@ -590,7 +710,11 @@
     </div>
     <div class="collection-grid">
       <div class="collection-card">
-        <div class="card-image">👕</div>
+        <div class="card-image">
+          <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M34 18 L22 23 L12 42 L25 49 L31 40 L31 80 L65 80 L65 40 L71 49 L84 42 L74 23 L62 18 C58 25 38 25 34 18 Z"/>
+          </svg>
+        </div>
         <div class="card-info">
           <div class="card-tag">New Arrivals</div>
           <h3>90s Graphic Tees</h3>
@@ -598,7 +722,13 @@
         </div>
       </div>
       <div class="collection-card">
-        <div class="card-image">🧥</div>
+        <div class="card-image">
+          <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M34 16 L21 21 L11 41 L24 48 L30 39 L30 82 L66 82 L66 39 L72 48 L85 41 L75 21 L62 16 L48 31 Z"/>
+            <path d="M48 31 V82"/>
+            <path d="M35 46 H43 V53 H35 Z M53 46 H61 V53 H53 Z"/>
+          </svg>
+        </div>
         <div class="card-info">
           <div class="card-tag">Premium</div>
           <h3>Vintage Denim</h3>
@@ -606,7 +736,14 @@
         </div>
       </div>
       <div class="collection-card">
-        <div class="card-image">👟</div>
+        <div class="card-image">
+          <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M16 46 C16 40 19 36 24 36 L34 36 C38 36 41 38 43 41 L48 47 C50 50 54 50 57 48 L68 41 C72 38 77 40 79 45 L82 54"/>
+            <path d="M12 64 C12 58 16 54 22 54 H74 C80 54 84 58 84 64 C84 69 80 72 74 72 H22 C16 72 12 69 12 64 Z"/>
+            <path d="M42 44 L48 49 M47 41 L53 46 M52 38 L58 43"/>
+            <path d="M68 54 C70 58 70 62 68 64"/>
+          </svg>
+        </div>
         <div class="card-info">
           <div class="card-tag">Sneakers</div>
           <h3>Retro Kicks</h3>
@@ -614,7 +751,14 @@
         </div>
       </div>
       <div class="collection-card">
-        <div class="card-image">🧢</div>
+        <div class="card-image">
+          <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M24 60 C24 42 34 31 49 31 C64 31 74 42 74 60 Z"/>
+            <path d="M49 31 V60"/>
+            <path d="M35 36 C37 45 37 53 36 60 M63 36 C61 45 61 53 62 60"/>
+            <path d="M60 60 C70 60 80 62 84 66 C86 69 83 71 78 71 H60 Z"/>
+          </svg>
+        </div>
         <div class="card-info">
           <div class="card-tag">Accessories</div>
           <h3>Headwear & More</h3>
@@ -626,33 +770,41 @@
 
   <section class="about" id="about">
     <div class="about-grid">
-      <div class="about-image">🏷️</div>
+      <div class="about-image">
+        <div class="spec-card">
+          <span class="spec-kicker">Archive 001</span>
+          <span class="spec-word">VNTGE<br>CULTURE</span>
+          <span class="spec-rule"></span>
+          <span class="spec-meta">SS26 — Pre-launch</span>
+        </div>
+      </div>
       <div class="about-content">
-        <h2>The <span>Vintage</span> Streetwear<br>Authority</h2>
-        <p>VNTGE CULTURE is a global vintage streetwear brand specializing in curated authentic pieces from the golden eras of street fashion. We source, authenticate, and distribute rare vintage garments to retailers and collectors worldwide.</p>
-        <p>From 90s graphic tees to rare sneaker collaborations, every piece in our collection is verified authentic and graded for condition. We are the bridge between vintage collectors and the global streetwear market.</p>
+        <h2>The <span>Vintage</span> Streetwear<br>Archive</h2>
+        <p>VNTGE CULTURE is a vintage streetwear concept built around curated pieces from the golden eras of street fashion — sourced, authenticated and graded before anything reaches the rail.</p>
+        <p>From 90s graphic tees to rare sneaker collaborations, the model is simple: verify the piece, grade the condition, document the provenance. The archive comes before the drop.</p>
         <div class="about-features">
-          <div class="about-feature"><div class="about-feature-dot"></div>100% Authentic</div>
-          <div class="about-feature"><div class="about-feature-dot"></div>Global Distribution</div>
-          <div class="about-feature"><div class="about-feature-dot"></div>Wholesale & Retail</div>
+          <div class="about-feature"><div class="about-feature-dot"></div>Authentication First</div>
           <div class="about-feature"><div class="about-feature-dot"></div>Graded Condition</div>
-          <div class="about-feature"><div class="about-feature-dot"></div>35+ Countries</div>
+          <div class="about-feature"><div class="about-feature-dot"></div>Wholesale & Retail</div>
           <div class="about-feature"><div class="about-feature-dot"></div>B2B & D2C</div>
+          <div class="about-feature"><div class="about-feature-dot"></div>Provenance Recorded</div>
+          <div class="about-feature"><div class="about-feature-dot"></div>Pre-launch Concept</div>
         </div>
       </div>
     </div>
   </section>
 
   <section class="stockists" id="stockists">
-    <h3>As Featured In</h3>
+    <h3>Stockist Marks — Placeholder</h3>
     <div class="stockist-logos">
-      <span class="stockist">SSENSE</span>
-      <span class="stockist">END.</span>
-      <span class="stockist">GALERIES LAFAYETTE</span>
-      <span class="stockIST">SELFRIDGES</span>
-      <span class="stockist">KITH</span>
-      <span class="stockist">BAIT</span>
+      <span class="stockist">Archive Room</span>
+      <span class="stockist">Deadstock Co.</span>
+      <span class="stockist">Loom &amp; Co.</span>
+      <span class="stockist">The Rail</span>
+      <span class="stockist">Second Life</span>
+      <span class="stockist">Northside</span>
     </div>
+    <p class="stockist-note">Illustrative marks — no affiliation. Real stockists are added at launch.</p>
   </section>
 
   <section class="instagram">
@@ -662,12 +814,43 @@
       <div class="section-line"></div>
     </div>
     <div class="insta-grid">
-      <div class="insta-item">👕</div>
-      <div class="insta-item">🧥</div>
-      <div class="insta-item">👟</div>
-      <div class="insta-item">🧢</div>
-      <div class="insta-item">👖</div>
-      <div class="insta-item">⌚</div>
+      <div class="insta-item">
+        <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M34 18 L22 23 L12 42 L25 49 L31 40 L31 80 L65 80 L65 40 L71 49 L84 42 L74 23 L62 18 C58 25 38 25 34 18 Z"/>
+        </svg>
+      </div>
+      <div class="insta-item">
+        <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M34 16 L21 21 L11 41 L24 48 L30 39 L30 82 L66 82 L66 39 L72 48 L85 41 L75 21 L62 16 L48 31 Z"/>
+          <path d="M48 31 V82"/>
+        </svg>
+      </div>
+      <div class="insta-item">
+        <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M16 46 C16 40 19 36 24 36 L34 36 C38 36 41 38 43 41 L48 47 C50 50 54 50 57 48 L68 41 C72 38 77 40 79 45 L82 54"/>
+          <path d="M12 64 C12 58 16 54 22 54 H74 C80 54 84 58 84 64 C84 69 80 72 74 72 H22 C16 72 12 69 12 64 Z"/>
+          <path d="M42 44 L48 49 M47 41 L53 46 M52 38 L58 43"/>
+        </svg>
+      </div>
+      <div class="insta-item">
+        <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M24 60 C24 42 34 31 49 31 C64 31 74 42 74 60 Z"/>
+          <path d="M60 60 C70 60 80 62 84 66 C86 69 83 71 78 71 H60 Z"/>
+        </svg>
+      </div>
+      <div class="insta-item">
+        <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M31 16 H65 L67 46 L63 82 H52 L48 54 L44 82 H33 L29 46 Z"/>
+          <path d="M31 24 H65"/>
+          <path d="M48 24 V40"/>
+        </svg>
+      </div>
+      <div class="insta-item">
+        <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M25 36 H71 L75 80 H21 Z"/>
+          <path d="M35 36 C35 23 61 23 61 36"/>
+        </svg>
+      </div>
     </div>
   </section>
 
@@ -675,8 +858,8 @@
     <h2>JOIN THE CULTURE</h2>
     <p>Get early access to new drops and exclusive wholesale pricing</p>
     <div class="newsletter-form">
-      <input type="email" placeholder="Enter your email">
-      <button>Subscribe</button>
+      <input type="email" placeholder="Enter your email" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
     </div>
   </section>
 
@@ -684,7 +867,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <h3>VNTGE CULTURE</h3>
-        <p>Global vintage streetwear distribution. Authentic pieces, curated collections, worldwide reach.</p>
+        <p>A vintage streetwear concept — authenticated pieces, curated collections, documented provenance.</p>
       </div>
       <div class="footer-col">
         <h4>Shop</h4>
@@ -718,6 +901,35 @@
       &copy; 2026 VNTGE CULTURE. All rights reserved.
     </div>
   </footer>
+
+  <script>
+    // Mobile nav disclosure — no framework, no build step.
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var links = document.getElementById('nav-links');
+      if (!toggle || !links) return;
+
+      function setOpen(open) {
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        if (open) links.setAttribute('data-open', 'true');
+        else links.removeAttribute('data-open');
+      }
+
+      toggle.addEventListener('click', function () {
+        setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+      });
+      links.addEventListener('click', function (e) {
+        if (e.target.closest('a')) setOpen(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
