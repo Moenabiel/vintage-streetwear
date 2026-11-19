@@ -75,10 +75,11 @@ footer`, with a fixed translucent nav that picks up a hairline gold border.
 2. The **marquee strip** between hero and collections (`AUTHENTIC VINTAGE · CURATED
    STREETWEAR · WORLDWIDE SHIPPING · WHOLESALE AVAILABLE`) — the wholesale promise stated
    as a rhythm, not a paragraph.
-3. **Ten hand-drawn inline SVG garment glyphs** (tee, denim jacket, sneaker, cap, jeans,
-   tote) — no raster image anywhere, so the art stays sharp at any density and the page
-   weighs nothing. The sneaker carries a heel collar, laces and a toe cap; the cap carries
-   panel seams and a peak — drawn, not emoji.
+3. **Ten inline SVG garment glyphs** — six shapes (tee, denim jacket, sneaker, cap, jeans,
+   tote) drawn once each and reused across the collection cards and the social grid. No
+   raster image anywhere, so the art stays sharp at any density and the page weighs nothing.
+   The sneaker carries a heel collar, laces and a toe cap; the cap carries panel seams and
+   a peak — drawn, not emoji.
 4. The **archive specimen card** in the About section: a typographic plate (`ARCHIVE 001`,
    the wordmark, a gold rule, `SS26 — PRE-LAUNCH`) doing the job a lookbook photo would do,
    in a build that ships no photography.
